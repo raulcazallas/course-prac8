@@ -1,8 +1,8 @@
 {% for port in {{ virtualhost_ports }} %}
-Listen {{port}}
-<VirtualHost *:{{port}}>
-    DocumentRoot "/var/www/html/service-{{port}}"
-    ServerName {{ansible_hostname}}
+Listen {{ port }}
+<VirtualHost *:{{ port }}>
+    DocumentRoot "/var/www/html/service-{{ port }}"
+    ServerName {{ ansible_hostname }}
 
     # Other directives here
 </VirtualHost>

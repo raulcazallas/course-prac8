@@ -4,7 +4,8 @@
   become: yes
   vars:
     paquetes:
-      instalar: chrony
+      instalar: 
+        - chrony
       service: chronyd
     servidorntp: time.google.com
   tasks:

@@ -1,0 +1,9 @@
+{% for port in {{ports}} %}
+Listen {{port}}
+<VirtualHost *:{{port}}>
+    DocumentRoot "/var/www/service-{{port}}"
+    ServerName {{ansible_hostname}}
+
+    # Other directives here
+</VirtualHost>
+{% endfor %}

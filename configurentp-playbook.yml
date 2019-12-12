@@ -23,7 +23,7 @@
 
     - name: "Configurando servidor"
       copy:
-        content: "Server {{ chrservidorntp }}"
+        content: "Server {{ servidorntp }}"
         dest: /etc/chrony.conf
       notify: reinicia_ntp
 

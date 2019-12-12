@@ -19,7 +19,7 @@
       service:
         name: "{{ paquetes.service }}"
         state: started
-        enable: yes
+        enabled: yes
 
     - name: "Configurando servidor"
       copy:

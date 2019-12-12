@@ -1,0 +1,27 @@
+---
+- name: httpd bonus
+  hosts: all
+  vars:
+    ports:
+      - 80
+      - 81
+  become: yes
+  tasks:
+    - name: Crea directorios
+        file:
+          path: /var/www/html/service-{{ item }}
+          state: directory
+        loop: {{ ports }}
+
+    - name: Sustituir httpd.con
+      template: 
+        src: ./templates/httpd.conf.j2
+        dest: /etc/httpd/conf/httpd.conf
+        mode: 0664
+      notify: restart_httpd
+  handlers:
+    - name: restart_httpd
+      service: 
+        name: httpd
+        state: restarted   
+...

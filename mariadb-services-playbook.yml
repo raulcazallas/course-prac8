@@ -2,6 +2,7 @@
 - name: "Administra mariadb"
   hosts: all
   become: yes
+  grather_facts: no
   vars:
     mysql_service_state: restarted
   tasks:

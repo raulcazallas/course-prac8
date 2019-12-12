@@ -2,7 +2,6 @@
 - name: fail playbook
   hosts: all
   become: yes
-  gather_facts: no
   tasks:
     - name: Falla al ejecutar
       fail:

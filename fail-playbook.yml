@@ -1,0 +1,9 @@
+---
+- name: fail playbook
+  hosts: all
+  become: yes
+  tasks:
+    - name: Falla al ejecutar
+      fail:
+        msg: "Ha fallado"
+...

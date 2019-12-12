@@ -1,0 +1,12 @@
+---
+- name: "Administra httpd"
+  hosts: all
+  become: yes
+  vars:
+    httpd_service_state: restarted
+  tasks:
+    - name: "Estado servicio"
+      service:
+        name: "httpd"
+        state: "{{ httpd_service_state }}"
+...

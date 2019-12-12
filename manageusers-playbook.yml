@@ -9,17 +9,19 @@
   tasks:
   - name: "Creando Usuario {{ users }}"
     user:
-      name: "{{ users }}"
-      comment: "Usuario {{ users }}"
+      name: "{{ item }}"
+      comment: "Usuario {{ item }}"
       create_home: yes
+    loop: "{{ users }}"
   
   - name: "Creando fichero con fecha de creacion"
     shell: date > /home/{{ users }}/{{ file }}
   
   - name: Cambiando permios fichero /home/users/
     file: 
-      path: /home/{{ users }}/{{ file }}
-      owner: "{{ users }}"
-      group: "{{ users }}"
-      mode: 0644   
+      path: /home/{{ item }}/{{ file }}
+      owner: "{{ item }}"
+      group: "{{ item }}"
+      mode: 0644  
+    loop: "{{ users }}"
 ...

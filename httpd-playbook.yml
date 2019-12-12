@@ -1,0 +1,33 @@
+---
+- name: Instalar y configurar http y php
+  hosts: all
+  become: yes
+  vars:
+    packages:
+      - httpd
+      - php
+  tasks:
+    - name: "Install paquetes"
+      package:
+        name: "{{ item }}"
+        state: present
+      loop: {{ packages }}
+
+    - name: "Create index.html"
+      copy:
+        content: "Bienvenido a {{ansible_hostname}}"
+        dest: /var/www/html/
+        mode: 0664
+
+    - name: "Create info.php"
+      copy:
+        content: "<?php phpinfo(); ?>"
+        dest: /var/www/html/
+        mode: 0664   
+      
+    - name: "Habilita y arranca httpd"
+      service:
+        name: httpd
+        state: started
+        enable: yes
+...

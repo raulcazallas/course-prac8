@@ -1,0 +1,37 @@
+---
+- name: "Configuracion NTP"
+  hosts: all
+  become: yes
+  vars:
+    paquetes:
+      instalar: chrony
+      service: chronyd
+    servidorntp: time.google.com
+  tasks:
+    - name: "Instalar ntp"
+      package:
+        name: "{{ item }}"
+        state: present
+      loop: {{ paquetes.instalar }}
+
+    - name: "Habilitar servicios"
+      service:
+        name: "{{ paquetes.service }}"
+        state: started
+        enable: yes
+
+    - name: "Configurando servidor"
+      copy:
+        content: "Server {{ chrservidorntp }}"
+        dest: /etc/chrony.conf
+      notify: reinicia_ntp
+
+  handlers:
+    - name: reinicia_ntp
+      service:  "{{ paquetes.service }}"
+      state: restarted
+...
+        
+      
+
+    

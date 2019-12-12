@@ -12,7 +12,7 @@
       package:
         name: "{{ item }}"
         state: present
-      loop: {{ paquetes.instalar }}
+      loop: "{{ paquetes.instalar }}"
 
     - name: "Habilitar servicios"
       service:

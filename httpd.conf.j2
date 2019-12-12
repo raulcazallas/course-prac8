@@ -1,4 +1,4 @@
-{% for port in {{ports}} %}
+{% for port in {{ virtualhost_ports }} %}
 Listen {{port}}
 <VirtualHost *:{{port}}>
     DocumentRoot "/var/www/html/service-{{port}}"

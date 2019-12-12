@@ -2,7 +2,7 @@
 - name: Instalar mariadb
   hosts: all
   become: yes
-  grather_facts: no
+  gather_facts: no
   vars:
     paquete: mariadb-server
   tasks:

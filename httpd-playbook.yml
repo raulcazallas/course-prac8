@@ -16,13 +16,13 @@
     - name: "Create index.html"
       copy:
         content: "Bienvenido a {{ansible_hostname}}"
-        dest: /var/www/html/
+        dest: /var/www/html/index.html
         mode: 0664
 
     - name: "Create info.php"
       copy:
         content: "<?php phpinfo(); ?>"
-        dest: /var/www/html/
+        dest: /var/www/html/info.php
         mode: 0664   
       
     - name: "Habilita y arranca httpd"

@@ -1,0 +1,12 @@
+---
+- name: "Administra mariadb"
+  hosts: all
+  become: yes
+  vars:
+    mysql_service_state: restarted
+  tasks:
+    - name: "Estado servicio"
+      service:
+        name: "mariadb"
+        state: "{{ mysql_service_state }}"
+...

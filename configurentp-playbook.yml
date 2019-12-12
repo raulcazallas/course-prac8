@@ -7,7 +7,7 @@
       instalar: 
         - chrony
       service: chronyd
-    servidorntp: time.google.com
+    ntp_server: time.google.com
   tasks:
     - name: "Instalar ntp"
       package:
@@ -23,7 +23,7 @@
 
     - name: "Configurando servidor"
       copy:
-        content: "Server {{ servidorntp }}"
+        content: "Server {{ ntp_server }}"
         dest: /etc/chrony.conf
       notify: reinicia_ntp
 

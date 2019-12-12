@@ -8,10 +8,10 @@
   become: yes
   tasks:
     - name: Crea directorios
-        file:
-          path: /var/www/html/service-{{ item }}
-          state: directory
-        loop: "{{ virtualhost_ports }}"
+      file:
+        path: /var/www/html/service-{{ item }}
+        state: directory
+      loop: "{{ virtualhost_ports }}"
 
     - name: Sustituir httpd.con
       template: 

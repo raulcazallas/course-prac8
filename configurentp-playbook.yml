@@ -28,8 +28,9 @@
 
   handlers:
     - name: reinicia_ntp
-      service:  "{{ paquetes.service }}"
-      state: restarted
+      service:  
+        name: "{{ paquetes.service }}"
+        state: restarted
 ...
         
       

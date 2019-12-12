@@ -2,7 +2,7 @@
 - name: httpd bonus 1
   hosts: all
   vars:
-    ports:
+    virtualhost_ports:
       - 80
       - 81
   become: yes
@@ -11,7 +11,7 @@
         file:
           path: /var/www/html/service-{{ item }}
           state: directory
-        loop: "{{ ports }}"
+        loop: "{{ virtualhost_ports }}"
 
     - name: Sustituir httpd.con
       template: 

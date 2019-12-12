@@ -23,14 +23,14 @@
     - name: eliminar linea del puerto 80
       lineinfile:
         path: /etc/httpd/conf/httpd.conf
-        regexp: '^Listen 80 '
+        regexp: '^Listen 80'
         state: absent
         backup: yes
-     - firewalld:
-         port: "{{ item }}/tcp"
-         permanent: yes
-         state: enabled
-       loop: "{{ virtualhost_ports }}"
+    - firewalld:
+        port: "{{ item }}/tcp"
+        permanent: yes
+        state: enabled
+      loop: "{{ virtualhost_ports }}"
         
   handlers:
     - name: restart_httpd

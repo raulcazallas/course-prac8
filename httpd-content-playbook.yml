@@ -11,6 +11,6 @@
     - name: crear fichero index.html
       template:
         src: index.html.j2
-        dest: /var/www/html/service-{{ item }}
-      loop: "{{ puertos.stdout_lines | list }}"
+        dest: /var/www/html/service-{{ item }}/index.html
+      loop: "{{ puertos.stdout_lines }}"
 ...

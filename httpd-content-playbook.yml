@@ -22,5 +22,11 @@
         dest: /var/www/html/service-{{ item }}/info.php
       loop: "{{ puertos.stdout_lines }}"
 
-
+    - name: crear fichero information.html
+      template:
+        src: information.html.j2
+        dest: /var/www/html/service-{{ info }}/information.html
+      loop: "{{ puertos.stdout_lines }}"
+      loop_control:
+        loop_var: info
 ...

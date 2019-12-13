@@ -26,11 +26,6 @@
         regexp: '^Listen 80'
         state: absent
         backup: yes
-    - firewalld:
-        port: "{{ item }}/tcp"
-        permanent: yes
-        state: enabled
-      loop: "{{ virtualhost_ports }}"
         
   handlers:
     - name: restart_httpd

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My new virtualhost site</title>
     <h1>{{ ansible_fqdn }}</h1>
-    <p>{{ ansible_os_family }}</p>
+    <p>{{ ansible_distribution }} {{ ansible_distribution_major_version }}</p>
     <p>Kernel version: {{ ansible_kernel }}</p>
     <p>vcpus: {{ ansible_processor_vcpus }} </p>
     <p>Memory: {{ ansible_memfree_mb }}</p>

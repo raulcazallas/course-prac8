@@ -1,0 +1,16 @@
+---
+- name: bonus 2
+  hosts: all
+  become: yes
+  tasks:
+    - name: obtener puertos httpd abiertos
+      shell:
+        cmd: netstat -putan | grep -i listen | grep [htt]pd|awk '{print $4}' | cut -d ":" -f 4
+      register: puertos
+
+    - name: crear fichero index.html
+      template:
+        src: index.html.j2
+        dest: /var/www/html/service-{{ item }}
+      loop: "{{ puertos.stdout_lines | list }}"
+...

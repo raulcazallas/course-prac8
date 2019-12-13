@@ -7,13 +7,6 @@
       shell:
         cmd: netstat -putan | grep -i listen | grep [htt]pd|awk '{print $4}' | cut -d ":" -f 4
       register: puertos
-    # - name: generar facts.d
-    #   blockinfile:
-    #     path: /etc/ansible/facts.d/port.fact
-    #     block: |
-    #       [{{item }}]
-    #       {{ item }}
-    #   loop: "{{ puertos.stdout_lines }}"
           
     - name: crear fichero index.html
       template:
@@ -22,4 +15,12 @@
       loop: "{{ puertos.stdout_lines }}"
       loop_control:
         loop_var: puerto
+
+    - name: crear fichero info.php
+      copy:
+        content: "<?php phpinfo(); ?>"
+        dest: /var/www/html/service-{{ item }}/info.php
+      loop: "{{ puertos.stdout_lines }}"
+
+
 ...

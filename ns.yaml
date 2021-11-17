@@ -6,7 +6,7 @@
   
   tasks:
     - name: view pods
-      command: curl -k -H 'Authorization: Bearer {{ TOKENk8 }}' -X GET {{ APISERVER }}/api/v1/namespaces/default/pods/
+      shell: curl -k -H "Authorization: Bearer {{ TOKENk8 }}" -X GET {{ APISERVER }}/api/v1/namespaces/default/pods/
       register: pods
       
     - debug:

@@ -1,7 +1,7 @@
 - hosts: localhost
   gather_facts: false
   vars:
-    APISERVER: rcazalla-k-azrglneticl-4442a4-f7ee4c80.hcp.westeurope.azmk8s.io
+    APISERVER: https://rcazalla-k-azrglneticl-4442a4-f7ee4c80.hcp.westeurope.azmk8s.io
   
   tasks:
     - name: view pods

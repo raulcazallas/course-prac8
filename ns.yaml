@@ -1,10 +1,8 @@
 - hosts: localhost
   gather_facts: false
+  vars:
+    APISERVER: rcazalla-k-azrglneticl-4442a4-f7ee4c80.hcp.westeurope.azmk8s.io
   
   tasks:
-    - name: Create ns in aks
-      k8s:
-        api_version: v1
-        kind: Namespace
-        name: ns-awx
-        state: present
+    - name: view pods
+      command: curl -X GET {{APISERVER}}/api/v1/namespaces/default/pods/

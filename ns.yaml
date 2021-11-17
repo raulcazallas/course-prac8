@@ -2,7 +2,7 @@
   gather_facts: false
   
   tasks:
-    - Name: Create ns in aks
+    - name: Create ns in aks
       k8s:
         api_version: v1
         kind: Namespace

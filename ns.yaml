@@ -1,12 +1,12 @@
 - hosts: localhost
   gather_facts: false
-  vars:
-    apiserver: https://rcazalla-k-azrglneticl-4442a4-f7ee4c80.hcp.westeurope.azmk8s.io
+  
+  collections:
+    - community.kubernetes
     
   tasks:
-    - name: view pods
-      shell: curl -k -X GET {{ apiserver }}/api/v1/namespaces/default/pods/
-      register: pods
-      
-    - debug:
-        var: pods.stdout
+    - k8s: Asegurar que awx-ns exists
+        api_version: v1
+        kind: Namespace
+        name: awx-ns
+        state: present

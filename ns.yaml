@@ -5,7 +5,8 @@
     - community.kubernetes
     
   tasks:
-    - k8s: Asegurar que awx-ns exists
+    - name: Asegurar que awx-ns exists
+      k8s:
         api_version: v1
         kind: Namespace
         name: awx-ns

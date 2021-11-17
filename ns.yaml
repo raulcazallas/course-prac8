@@ -6,3 +6,7 @@
   tasks:
     - name: view pods
       command: curl -k -X GET {{APISERVER}}/api/v1/namespaces/default/pods/
+      register: pods
+      
+    - debug:
+        var: pods.stdout
